@@ -1,8 +1,75 @@
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id              Int      @id @default(autoincrement())
+    firstName       String   @db.VarChar(100)
+    lastName        String   @db.VarChar(100)
+    email           String   @unique
+    password        String   
+    role            Role     @default(USER)
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+
+    revenues        Revenue[]
+    expenses        Expense[]
+    assets          Asset[]
+}
+
+model Revenue {
+    id              Int      @id @default(autoincrement())
+    name            String   @db.VarChar(100)
+    description     String   @db.VarChar(1000)
+    value           Float
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+
+    belongsTo       User     @relation(fields: [belongsToId], references: [id])
+    belongsToId     Int     
+}
+
+model Expense {
+    id              Int      @id @default(autoincrement())
+    name            String   @db.VarChar(100)
+    description     String   @db.VarChar(1000)
+    value           Float
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+
+    belongsTo       User     @relation(fields: [belongsToId], references: [id])
+    belongsToId     Int
+}
+
+model Asset {
+    id              Int      @id @default(autoincrement())
+    name            String   @db.VarChar(100)
+    type            AssetType
+    description     String   @db.VarChar(1000)
+    value           Float
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+
+    belongsTo       User     @relation(fields: [belongsToId], references: [id])
+    belongsToId     Int
+}
+
+enum Role {
+    USER
+    ADMIN
+}
+
+enum AssetType {
+    P2P
+    STOCK
+    BOND
+    CRYPTO
+    REAL_ESTATE
+    COMMODITY
+    CASH
 }
