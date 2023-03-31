@@ -1,0 +1,29 @@
+{
+    "expenses": [
+        { "id": 1, "name": "Miete", "amount": 350 },
+        { "id": 2, "name": "Konsumausgaben", "amount": 300 },
+        { "id": 3, "name": "Krankenkasse", "amount": 122.78 },
+        { "id": 4, "name": "Spotify", "amount": 9.99 },
+        { "id": 5, "name": "McFit", "amount": 20.0 },
+        { "id": 6, "name": "iCloud", "amount": 2.99 },
+        { "id": 7, "name": "Reisekrankenversicherung", "amount": 0.75 },
+        { "id": 8, "name": "Strom", "amount": 39.0 },
+        { "id": 9, "name": "Mobilfunk", "amount": 10.0 },
+        { "id": 10, "name": "Brillenversicherung", "amount": 0.83 },
+        { "id": 11, "name": "BahnCard", "amount": 3.08 },
+        { "id": 12, "name": "Hosting", "amount": 5.0 },
+        { "id": 13, "name": "Internet", "amount": 25.0 },
+        { "id": 14, "name": "Haftpflichtversicherung", "amount": 3.48 }
+    ],
+    "revenues": [
+        { "id": 1, "name": "Bafög", "amount": 800 },
+        { "id": 2, "name": "Aufzehrung von Ersparnissen", "amount": 200 }
+    ],
+    "assets": [
+        { "name": "Bondora Go & Grow", "type": "P2P", "amount": 2400 },
+        { "name": "LBS Bausparen", "type": "Bausparen", "amount": 1400 },
+        { "name": "ING-Depot", "type": "ETF", "amount": 5500 },
+        { "name": "Trade-Depot", "type": "ETF", "amount": 150 },
+        { "name": "Tagegeldkonto", "type": "Tagesgeld", "amount": 3000 }
+    ]
+}
