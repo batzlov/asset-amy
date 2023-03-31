@@ -133,10 +133,7 @@ export default function Overview() {
                         </Table>
                     </TableContainer>
                 </Box>
-                <Box
-                    marginTop={4}
-                    marginBottom={4}
-                >
+                <Box marginTop={4} marginBottom={4}>
                     <Heading as="h2">Asset Allocation</Heading>
                     <TableContainer marginTop={4}>
                         <Table variant="simple">

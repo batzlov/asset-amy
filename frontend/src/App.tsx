@@ -10,26 +10,11 @@ import { AssetAllocation, Expenses, Overview, Revenues } from "./pages";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route
-            path="/"
-            element={<RootLayout />}
-        >
-            <Route
-                index
-                element={<Overview />}
-            />
-            <Route
-                path="revenues"
-                element={<Revenues />}
-            />
-            <Route
-                path="expenses"
-                element={<Expenses />}
-            />
-            <Route
-                path="asset-allocation"
-                element={<AssetAllocation />}
-            />
+        <Route path="/" element={<RootLayout />}>
+            <Route index element={<Overview />} />
+            <Route path="revenues" element={<Revenues />} />
+            <Route path="expenses" element={<Expenses />} />
+            <Route path="asset-allocation" element={<AssetAllocation />} />
         </Route>
     )
 );

@@ -40,19 +40,13 @@ export default function NavBar() {
 
     return (
         <>
-            <Box
-                bg={useColorModeValue("gray.100", "gray.900")}
-                px={4}
-            >
+            <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
                 <Flex
                     h={16}
                     alignItems={"center"}
                     justifyContent={"space-between"}
                 >
-                    <HStack
-                        spacing={8}
-                        alignItems={"center"}
-                    >
+                    <HStack spacing={8} alignItems={"center"}>
                         <Box>Asset Amy</Box>
                     </HStack>
                     <HStack
@@ -61,10 +55,7 @@ export default function NavBar() {
                         display={{ base: "none", md: "flex" }}
                     >
                         {routerLinks.map((link) => (
-                            <NavLink
-                                key={link.path}
-                                to={link.path}
-                            >
+                            <NavLink key={link.path} to={link.path}>
                                 {link.name}
                             </NavLink>
                         ))}
@@ -79,19 +70,10 @@ export default function NavBar() {
                 </Flex>
 
                 {isOpen ? (
-                    <Box
-                        pb={4}
-                        display={{ md: "none" }}
-                    >
-                        <Stack
-                            as={"nav"}
-                            spacing={4}
-                        >
+                    <Box pb={4} display={{ md: "none" }}>
+                        <Stack as={"nav"} spacing={4}>
                             {routerLinks.map((link) => (
-                                <NavLink
-                                    key={link.path}
-                                    to={link.path}
-                                >
+                                <NavLink key={link.path} to={link.path}>
                                     {link.name}
                                 </NavLink>
                             ))}
