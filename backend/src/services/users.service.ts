@@ -6,8 +6,10 @@ import prisma from "prisma/prisma";
 
 @Injectable()
 export class UsersService {
-    async findAll(): Promise<User[]> {
-        return await prisma.user.findMany();
+    async findAll(where: any): Promise<User[]> {
+        return await prisma.user.findMany({
+            where: where,
+        });
     }
 
     async findOne(where: any): Promise<User> {
