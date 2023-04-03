@@ -1,15 +1,30 @@
-import { Box, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
-import { Outlet } from "react-router-dom";
+import { ArrowBackIcon } from "@chakra-ui/icons";
+import {
+    Box,
+    Button,
+    Grid,
+    GridItem,
+    Heading,
+    Icon,
+    Text,
+    VStack,
+} from "@chakra-ui/react";
+import { NavLink, Outlet } from "react-router-dom";
 
 export default function AuthLayout() {
     return (
-        <SimpleGrid as="main" minH="100vh" w="100vw" columns={[1, 1, 2]}>
-            <Box
+        <Grid as="main" minH="100vh" w="100vw" templateColumns="repeat(6, 1fr)">
+            <GridItem
                 bg="teal.600"
                 alignItems="center"
                 display="flex"
                 justifyContent="center"
                 p={6}
+                colSpan={{
+                    base: 6,
+                    lg: 3,
+                    xl: 2,
+                }}
             >
                 <VStack>
                     <Heading
@@ -33,15 +48,30 @@ export default function AuthLayout() {
                         Author
                     </Text>
                 </VStack>
-            </Box>
-            <Box
+            </GridItem>
+            <GridItem
                 bg="gray.200"
-                alignItems="center"
-                display="flex"
-                justifyContent="center"
+                colSpan={{
+                    base: 6,
+                    lg: 3,
+                    xl: 4,
+                }}
             >
-                <Outlet />
-            </Box>
-        </SimpleGrid>
+                <Box display="flex" justifyContent="end">
+                    <Button variant="ghost" as={NavLink} to="/">
+                        <Icon as={ArrowBackIcon} color="black" mr={2} />
+                        Home
+                    </Button>
+                </Box>
+                <Box
+                    alignItems="center"
+                    display="flex"
+                    justifyContent="center"
+                    h="95%"
+                >
+                    <Outlet />
+                </Box>
+            </GridItem>
+        </Grid>
     );
 }

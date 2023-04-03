@@ -12,7 +12,7 @@ import { Form } from "react-router-dom";
 
 export default function SignIn() {
     return (
-        <Card m={6} w="100%">
+        <Card m={6} w="100%" maxW="700px">
             <CardBody>
                 <Heading as="h2" fontSize="2xl" textAlign="center" mb={5}>
                     Melde dich in deinem Konto an.
@@ -35,7 +35,7 @@ export default function SignIn() {
                         />
                     </FormControl>
                     <Button variant="link" mb="20px">
-                        Du hast noch kein Nutzer:innen-Konto bei Asset Amy?
+                        Du hast noch kein Konto bei Asset Amy?
                     </Button>
                     <Stack direction="row" justifyContent="center">
                         <Button colorScheme="teal">anmelden</Button>

@@ -14,10 +14,16 @@ import { NavLink as ReactNavLink } from "react-router-dom";
 
 const routerLinks = [
     { name: "Übersicht", path: "/" },
-    { name: "Ausgaben", path: "/expenses" },
-    { name: "Einnahmen", path: "/revenues" },
-    { name: "Vermögensverteilung", path: "/asset-allocation" },
+    { name: "Anmelden", path: "/sign-in" },
+    { name: "Registrieren", path: "/sign-up" },
 ];
+
+// const routerLinks = [
+//     { name: "Übersicht", path: "/" },
+//     { name: "Ausgaben", path: "/expenses" },
+//     { name: "Einnahmen", path: "/revenues" },
+//     { name: "Vermögensverteilung", path: "/asset-allocation" },
+// ];
 
 const NavLink = ({ children, to }: { children: ReactNode; to: string }) => (
     <Link
@@ -27,7 +33,7 @@ const NavLink = ({ children, to }: { children: ReactNode; to: string }) => (
         rounded={"md"}
         _hover={{
             textDecoration: "none",
-            bg: useColorModeValue("gray.200", "gray.700"),
+            bg: useColorModeValue("teal.300", "gray.700"),
         }}
         to={to}
     >
@@ -40,7 +46,11 @@ export default function NavBar() {
 
     return (
         <>
-            <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+            <Box
+                bg={useColorModeValue("teal.500", "gray.900")}
+                px={4}
+                color="white"
+            >
                 <Flex
                     h={16}
                     alignItems={"center"}
