@@ -1,4 +1,11 @@
 import { Controller } from "@nestjs/common";
 
 @Controller("revenues")
-export class RevenuesController {}
+export default class RevenuesController {
+    constructor() {}
+
+    async findAll() {}
+    async create() {}
+    async update() {}
+    async delete() {}
+}

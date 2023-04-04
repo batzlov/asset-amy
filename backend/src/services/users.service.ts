@@ -5,7 +5,7 @@ import { User } from "@prisma/client";
 import prisma from "prisma/prisma";
 
 @Injectable()
-export class UsersService {
+export default class UsersService {
     async findAll(where: any): Promise<User[]> {
         return await prisma.user.findMany({
             where: where,

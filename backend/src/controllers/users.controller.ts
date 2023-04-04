@@ -12,11 +12,11 @@ import {
 } from "@nestjs/common";
 import { User } from "@prisma/client";
 import * as bcrypt from "bcrypt";
-import { CreateUserDto } from "src/dtos/user.dto";
-import { UsersService } from "src/services/users.service";
+import { CreateUserDto } from "src/dtos";
+import { UsersService } from "src/services";
 
 @Controller("users")
-export class UsersController {
+export default class UsersController {
     constructor(private readonly usersService: UsersService) {}
 
     @Get(":id")

@@ -1,4 +1,4 @@
 import { Controller } from "@nestjs/common";
 
 @Controller("assets")
-export class AssetsController {}
+export default class AssetsController {}

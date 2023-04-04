@@ -5,7 +5,7 @@ import { Asset } from "@prisma/client";
 import prisma from "prisma/prisma";
 
 @Injectable()
-export class AssetsService {
+export default class AssetsService {
     async findAll(where: any): Promise<Asset[]> {
         return await prisma.asset.findMany({
             where: where,

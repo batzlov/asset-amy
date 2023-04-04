@@ -5,7 +5,7 @@ import { Revenue } from "@prisma/client";
 import prisma from "prisma/prisma";
 
 @Injectable()
-export class RevenuesService {
+export default class RevenuesService {
     async findAll(where: any): Promise<Revenue[]> {
         return await prisma.revenue.findMany({
             where: where,
