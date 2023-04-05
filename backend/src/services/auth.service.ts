@@ -4,7 +4,7 @@ import * as bcrypt from "bcrypt";
 import { UsersService } from "./";
 
 @Injectable()
-export default class AuthService {
+export class AuthService {
     constructor(
         private usersService: UsersService,
         private jwtService: JwtService
