@@ -30,3 +30,6 @@ Insgesamt soll "Asset Amy" verschiedene Funktionen zur Verwaltung von Einnahmen,
         ├── layouts
         └── pages
 ```
+
+### ERD-Modell
+![ERD-Modell](./docs/database/db-erd.png)
