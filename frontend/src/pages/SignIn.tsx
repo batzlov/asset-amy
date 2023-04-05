@@ -27,6 +27,7 @@ export default function SignIn() {
                 </Heading>
                 <Form
                     method="post"
+                    // signIn Funktion wird nicht ausgeführt
                     onSubmit={() => auth.signIn(mail, password)}
                 >
                     <FormControl isRequired mb="20px">
