@@ -1,3 +1,9 @@
+generator erd {
+    provider = "prisma-erd-generator"
+    output = "../../docs/database/db-erd.png"
+    theme = "default"
+}
+
 generator client {
     provider = "prisma-client-js"
 }
