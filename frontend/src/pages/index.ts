@@ -1,3 +1,4 @@
+import Landing from "./Landing";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
@@ -6,4 +7,12 @@ import Expenses from "./Expenses";
 import Overview from "./Overview";
 import Revenues from "./Revenues";
 
-export { SignIn, SignUp, AssetAllocation, Expenses, Revenues, Overview };
+export {
+    Landing,
+    SignIn,
+    SignUp,
+    AssetAllocation,
+    Expenses,
+    Revenues,
+    Overview,
+};

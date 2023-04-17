@@ -9,6 +9,7 @@ import { AuthLayout, RootLayout } from "./layouts";
 import {
     AssetAllocation,
     Expenses,
+    Landing,
     Overview,
     Revenues,
     SignIn,
@@ -23,7 +24,8 @@ const router = createBrowserRouter(
                 <Route path="/sign-in" element={<SignIn />} />
             </Route>
             <Route path="/" element={<RootLayout />}>
-                <Route index element={<Overview />} />
+                <Route index element={<Landing />} />
+                <Route path="overview" element={<Overview />} />
                 <Route path="revenues" element={<Revenues />} />
                 <Route path="expenses" element={<Expenses />} />
                 <Route path="asset-allocation" element={<AssetAllocation />} />
