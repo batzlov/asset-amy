@@ -4,6 +4,7 @@ import {
     Flex,
     HStack,
     IconButton,
+    Image,
     Link,
     Stack,
     useColorModeValue,
@@ -33,7 +34,7 @@ const NavLink = ({ children, to }: { children: ReactNode; to: string }) => (
         rounded={"md"}
         _hover={{
             textDecoration: "none",
-            bg: useColorModeValue("teal.300", "gray.700"),
+            bg: useColorModeValue("purple.600", "gray.700"),
         }}
         to={to}
     >
@@ -47,7 +48,7 @@ export default function NavBar() {
     return (
         <>
             <Box
-                bg={useColorModeValue("teal.500", "gray.900")}
+                bg={useColorModeValue("purple.700", "gray.900")}
                 px={4}
                 color="white"
             >
@@ -56,8 +57,13 @@ export default function NavBar() {
                     alignItems={"center"}
                     justifyContent={"space-between"}
                 >
-                    <HStack spacing={8} alignItems={"center"}>
-                        <Box>Asset Amy</Box>
+                    <HStack>
+                        <Image
+                            maxH="25px"
+                            objectFit="contain"
+                            src="/asset-amy-logo.png"
+                            alt="Asset Amy Logo"
+                        />
                     </HStack>
                     <HStack
                         as={"nav"}
@@ -75,6 +81,8 @@ export default function NavBar() {
                         icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
                         aria-label={"Open Menu"}
                         display={{ md: "none" }}
+                        _hover={{ bgColor: "purple.600" }}
+                        bg={useColorModeValue("purple.700", "gray.900")}
                         onClick={isOpen ? onClose : onOpen}
                     />
                 </Flex>
