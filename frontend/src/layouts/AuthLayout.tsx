@@ -13,17 +13,24 @@ import { NavLink, Outlet } from "react-router-dom";
 
 export default function AuthLayout() {
     return (
-        <Grid as="main" minH="100vh" w="100vw" templateColumns="repeat(6, 1fr)">
+        <Grid
+            as="main"
+            minH="100vh"
+            w="100vw"
+            templateColumns="repeat(10, 1fr)"
+        >
             <GridItem
-                bg="teal.600"
+                bg="purple.700"
+                display={{
+                    base: "none",
+                    lg: "flex",
+                }}
                 alignItems="center"
-                display="flex"
                 justifyContent="center"
                 p={6}
                 colSpan={{
-                    base: 6,
-                    lg: 3,
-                    xl: 2,
+                    base: 10,
+                    lg: 4,
                 }}
             >
                 <VStack>
@@ -45,16 +52,16 @@ export default function AuthLayout() {
                         pr={5}
                         textAlign="end"
                     >
-                        Author
+                        Unknown Author
                     </Text>
                 </VStack>
             </GridItem>
             <GridItem
                 bg="gray.200"
                 colSpan={{
-                    base: 6,
-                    lg: 3,
-                    xl: 4,
+                    base: 10,
+                    lg: 6,
+                    xl: 6,
                 }}
             >
                 <Box display="flex" justifyContent="end">
