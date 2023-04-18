@@ -53,7 +53,7 @@ export function AuthProvider({
         (email: string, password: string) => {
             setLoading(true);
 
-            fetch("http://localhost:3000/auth/login", {
+            fetch("http://localhost:3000/auth/sign-in", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
