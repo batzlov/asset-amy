@@ -12,19 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { NavLink as ReactNavLink } from "react-router-dom";
-
-const routerLinks = [
-    { name: "Übersicht", path: "/" },
-    { name: "Anmelden", path: "/sign-in" },
-    { name: "Registrieren", path: "/sign-up" },
-];
-
-// const routerLinks = [
-//     { name: "Übersicht", path: "/" },
-//     { name: "Ausgaben", path: "/expenses" },
-//     { name: "Einnahmen", path: "/revenues" },
-//     { name: "Vermögensverteilung", path: "/asset-allocation" },
-// ];
+import useAuth from "./store/AuthContext";
 
 const NavLink = ({ children, to }: { children: ReactNode; to: string }) => (
     <Link
@@ -43,6 +31,33 @@ const NavLink = ({ children, to }: { children: ReactNode; to: string }) => (
 );
 
 export default function NavBar() {
+    let routerLinks = [
+        { name: "Home", path: "/" },
+        { name: "Anmelden", path: "/sign-in" },
+        { name: "Registrieren", path: "/sign-up" },
+        { name: "Übersicht", path: "/overview" },
+        { name: "Ausgaben", path: "/expenses" },
+        { name: "Einnahmen", path: "/revenues" },
+        { name: "Vermögensverteilung", path: "/asset-allocation" },
+        { name: "Abmelden", path: "/sign-out" },
+    ];
+
+    const { token } = useAuth();
+    console.log(token);
+    if (!token) {
+        routerLinks = routerLinks.filter((link) => link.path !== "/overview");
+        routerLinks = routerLinks.filter((link) => link.path !== "/expenses");
+        routerLinks = routerLinks.filter((link) => link.path !== "/revenues");
+        routerLinks = routerLinks.filter(
+            (link) => link.path !== "/asset-allocation"
+        );
+        routerLinks = routerLinks.filter((link) => link.path !== "/sign-out");
+    } else {
+        routerLinks = routerLinks.filter((link) => link.path !== "/");
+        routerLinks = routerLinks.filter((link) => link.path !== "/sign-in");
+        routerLinks = routerLinks.filter((link) => link.path !== "/sign-up");
+    }
+
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (

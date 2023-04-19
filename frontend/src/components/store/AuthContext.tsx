@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 interface AuthContextType {
     token?: string;
     loading: boolean;
-    error: Error;
+    error: Error | undefined;
     user: any | undefined;
     signIn: (email: string, password: string) => void;
     signOut: () => void;

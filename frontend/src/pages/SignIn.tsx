@@ -13,7 +13,7 @@ import {
     Stack,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
-import { Form, NavLink } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import * as Yup from "yup";
 import useAuth from "../components/store/AuthContext";
 
@@ -92,7 +92,7 @@ export default function SignIn() {
                             value={formik.values.password}
                         />
                     </FormControl>
-                    <Button as={NavLink} to="/sign-up" variant="link" mb="20px">
+                    <Button as={Link} to="/sign-up" variant="link" mb="20px">
                         Du hast noch kein Konto bei Asset Amy?
                     </Button>
                     <Stack direction="row" justifyContent="center">

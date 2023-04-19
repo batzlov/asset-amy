@@ -4,6 +4,7 @@ import {
     Route,
     RouterProvider,
 } from "react-router-dom";
+import { AuthProvider } from "./components/store/AuthContext";
 
 import { AuthLayout, RootLayout } from "./layouts";
 import {
@@ -19,11 +20,25 @@ import {
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path="/" element={<AuthLayout />}>
+            <Route
+                path="/"
+                element={
+                    <AuthProvider>
+                        <AuthLayout />
+                    </AuthProvider>
+                }
+            >
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/sign-in" element={<SignIn />} />
             </Route>
-            <Route path="/" element={<RootLayout />}>
+            <Route
+                path="/"
+                element={
+                    <AuthProvider>
+                        <RootLayout />
+                    </AuthProvider>
+                }
+            >
                 <Route index element={<Landing />} />
                 <Route path="overview" element={<Overview />} />
                 <Route path="revenues" element={<Revenues />} />

@@ -19,11 +19,7 @@ export default function Overview() {
     const [revenues, setRevenues] = useState([]);
     const [assets, setAssets] = useState([]);
 
-    useEffect(() => {
-        fetchExpenses();
-        fetchRevenues();
-        fetchAssets();
-    }, []);
+    useEffect(() => {}, []);
 
     const formatter = new Intl.NumberFormat("de-DE", {
         style: "currency",

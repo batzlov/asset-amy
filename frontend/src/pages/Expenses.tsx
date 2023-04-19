@@ -13,7 +13,7 @@ import {
     Thead,
     Tr,
 } from "@chakra-ui/react";
-import UseFetch from "../hooks/useFetch";
+import UseFetch from "../hooks/UseFetch";
 
 export default function Expenses() {
     const {
@@ -49,41 +49,43 @@ export default function Expenses() {
     }
 
     return (
-        <Box marginTop={4}>
-            <Heading as="h2">Ausgaben</Heading>
-            <TableContainer marginTop={4}>
-                <Table variant="simple">
-                    <TableCaption>Monatliche Ausgaben</TableCaption>
-                    <Thead>
-                        <Tr>
-                            <Th>Name der Ausgaben</Th>
-                            <Th>Höhe der Ausgaben</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        {expenses.map((expense: any) => (
-                            <Tr key={expense.name}>
-                                <Td>{expense.name}</Td>
-                                <Td>{formatter.format(expense.amount)}</Td>
+        <Container minWidth="800px">
+            <Box marginTop={4}>
+                <Heading as="h2">Ausgaben</Heading>
+                <TableContainer marginTop={4}>
+                    <Table variant="simple">
+                        <TableCaption>Monatliche Ausgaben</TableCaption>
+                        <Thead>
+                            <Tr>
+                                <Th>Name der Ausgaben</Th>
+                                <Th>Höhe der Ausgaben</Th>
                             </Tr>
-                        ))}
-                    </Tbody>
-                    <Tfoot>
-                        <Tr>
-                            <Th>Ausgaben insgesamt:</Th>
-                            <Th>
-                                {formatter.format(
-                                    sumNumbers(
-                                        expenses.map(
-                                            (expense: any) => expense.amount
+                        </Thead>
+                        <Tbody>
+                            {[].map((expense: any) => (
+                                <Tr key={expense.name}>
+                                    <Td>{expense.name}</Td>
+                                    <Td>{formatter.format(expense.amount)}</Td>
+                                </Tr>
+                            ))}
+                        </Tbody>
+                        <Tfoot>
+                            <Tr>
+                                <Th>Ausgaben insgesamt:</Th>
+                                <Th>
+                                    {formatter.format(
+                                        sumNumbers(
+                                            [].map(
+                                                (expense: any) => expense.amount
+                                            )
                                         )
-                                    )
-                                )}
-                            </Th>
-                        </Tr>
-                    </Tfoot>
-                </Table>
-            </TableContainer>
-        </Box>
+                                    )}
+                                </Th>
+                            </Tr>
+                        </Tfoot>
+                    </Table>
+                </TableContainer>
+            </Box>
+        </Container>
     );
 }
