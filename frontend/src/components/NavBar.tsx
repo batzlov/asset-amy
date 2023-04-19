@@ -14,7 +14,15 @@ import { ReactNode } from "react";
 import { NavLink as ReactNavLink } from "react-router-dom";
 import useAuth from "./store/AuthContext";
 
-const NavLink = ({ children, to }: { children: ReactNode; to: string }) => (
+const NavLink = ({
+    children,
+    to,
+    onClick,
+}: {
+    children: ReactNode;
+    to: string;
+    onClick: () => void;
+}) => (
     <Link
         px={2}
         py={1}
@@ -24,7 +32,12 @@ const NavLink = ({ children, to }: { children: ReactNode; to: string }) => (
             textDecoration: "none",
             bg: useColorModeValue("purple.600", "gray.700"),
         }}
+        _activeLink={{
+            bg: "purple.600",
+            fontWeight: "bold",
+        }}
         to={to}
+        onClick={onClick}
     >
         {children}
     </Link>
@@ -39,11 +52,11 @@ export default function NavBar() {
         { name: "Ausgaben", path: "/expenses" },
         { name: "Einnahmen", path: "/revenues" },
         { name: "Vermögensverteilung", path: "/asset-allocation" },
-        { name: "Abmelden", path: "/sign-out" },
+        { name: "Abmelden", path: "/" },
     ];
 
-    const { token } = useAuth();
-    console.log(token);
+    const { token, signOut } = useAuth();
+
     if (!token) {
         routerLinks = routerLinks.filter((link) => link.path !== "/overview");
         routerLinks = routerLinks.filter((link) => link.path !== "/expenses");
@@ -51,9 +64,9 @@ export default function NavBar() {
         routerLinks = routerLinks.filter(
             (link) => link.path !== "/asset-allocation"
         );
-        routerLinks = routerLinks.filter((link) => link.path !== "/sign-out");
+        routerLinks = routerLinks.filter((link) => link.name !== "Abmelden");
     } else {
-        routerLinks = routerLinks.filter((link) => link.path !== "/");
+        routerLinks = routerLinks.filter((link) => link.name !== "Home");
         routerLinks = routerLinks.filter((link) => link.path !== "/sign-in");
         routerLinks = routerLinks.filter((link) => link.path !== "/sign-up");
     }
@@ -86,7 +99,15 @@ export default function NavBar() {
                         display={{ base: "none", md: "flex" }}
                     >
                         {routerLinks.map((link) => (
-                            <NavLink key={link.path} to={link.path}>
+                            <NavLink
+                                key={link.path}
+                                to={link.path}
+                                onClick={
+                                    link.name === "Abmelden"
+                                        ? signOut
+                                        : () => {}
+                                }
+                            >
                                 {link.name}
                             </NavLink>
                         ))}
@@ -106,7 +127,15 @@ export default function NavBar() {
                     <Box pb={4} display={{ md: "none" }}>
                         <Stack as={"nav"} spacing={4}>
                             {routerLinks.map((link) => (
-                                <NavLink key={link.path} to={link.path}>
+                                <NavLink
+                                    key={link.path}
+                                    to={link.path}
+                                    onClick={
+                                        link.name === "Abmelden"
+                                            ? signOut
+                                            : () => {}
+                                    }
+                                >
                                     {link.name}
                                 </NavLink>
                             ))}
