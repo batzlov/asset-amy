@@ -7,6 +7,7 @@ import {
     Heading,
     Input,
     Stack,
+    useToast,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
 import { Form, NavLink } from "react-router-dom";
@@ -14,12 +15,34 @@ import * as Yup from "yup";
 import usePost from "../hooks/UsePost";
 
 export default function SignUp() {
-    const { error: signUpError, sendPost: signUpPost } = usePost<any>(
-        "/auth/sign-up",
-        (data) => {
-            console.log(data, "Sign up successful!");
-        }
-    );
+    const toast = useToast();
+
+    const {
+        response: signUpResponse,
+        data: signUpData,
+        error: signUpError,
+        sendPost: signUpPost,
+    } = usePost<any>({
+        path: "/users",
+        onSuccess: () => {
+            formik.resetForm();
+
+            toast({
+                title: "Dein Konto wurde erfolgreich erstellt.",
+                status: "success",
+                duration: 5000,
+                isClosable: false,
+            });
+        },
+        onError: () => {
+            toast({
+                title: signUpError?.message,
+                status: "error",
+                duration: 5000,
+                isClosable: false,
+            });
+        },
+    });
 
     const formik = useFormik({
         initialValues: {
@@ -29,22 +52,13 @@ export default function SignUp() {
             password: "",
         },
         validationSchema: Yup.object({
-            firstName: Yup.string()
-                .required()
-                .min(3, "Bitte ein gültigen Vornamen eingeben."),
-            lastName: Yup.string()
-                .required()
-                .min(3, "Bitte ein gültigen Nachnamen eingeben."),
-            email: Yup.string()
-                .required()
-                .email("Bitte eine gültiges E-Mail eingeben."),
-            password: Yup.string()
-                .required()
-                .min(3, "Bitte ein gültiges Passwort eingeben."),
+            firstName: Yup.string().required().min(3),
+            lastName: Yup.string().required().min(3),
+            email: Yup.string().required().email(),
+            password: Yup.string().required().min(3),
         }),
         onSubmit: (values) => {
             signUpPost(values);
-            console.log(values);
         },
     });
 
